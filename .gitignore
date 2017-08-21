@@ -3,3 +3,4 @@ node_modules
 /assets/avatar.svg
 build/*
 build
+output
