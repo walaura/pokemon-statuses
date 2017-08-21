@@ -1,0 +1,5 @@
+node_modules
+/assets/cover.svg
+/assets/avatar.svg
+build/*
+build

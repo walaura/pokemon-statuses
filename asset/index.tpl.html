@@ -1,0 +1,49 @@
+<box>
+    <img src='{img}'/>
+    <text>{text.1}</text>
+</box>
+<box>
+    <img src='{img}'/>
+    <text>{text.2}</text>
+</box>
+
+<style type='text/css'>
+    @font-face {
+        font-family: 'munro';
+        src: url('./../asset/fonts/munro/munro-webfont.woff2') format('woff2'),
+             url('./../asset/fonts/munro/munro-webfont.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+
+    }
+    * {
+        display:block;
+        margin:0;
+        padding:0;
+        -webkit-font-smoothing: none;
+        font: 11px munro, sans-serif;
+    }
+    box {
+        width: 140px;
+        height: 150px;
+        background: url(./../asset/bg.png);
+        overflow: hidden;
+        position: relative;
+    }
+    box img {
+        width: 64px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 33%;
+        margin: auto;
+    }
+    box text {
+        position: absolute;
+        top: 75%;
+        left: 8%;
+        right: 16%;
+        bottom: 0;
+        text-shadow: 1px 1px 0 rgba(0,125,125,.25);
+    }
+</style>
