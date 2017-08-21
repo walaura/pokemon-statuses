@@ -7,8 +7,8 @@ describe('Basic', function() {
 
 		try {
 			makeLine().then(line=>{
-				done()
-			})
+				done();
+			});
 		} catch (err) {
 			done(err);
 		}

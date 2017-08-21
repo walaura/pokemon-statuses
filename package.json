@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "mocha",
-    "post": "node screenshot"
+    "post": "node bin/tweet"
   },
   "repository": {
     "type": "git",
