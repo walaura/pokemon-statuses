@@ -25,3 +25,4 @@ nano
 python-gobject-2
 curl
 git
+libxcomposite-dev
