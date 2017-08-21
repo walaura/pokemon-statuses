@@ -21,7 +21,9 @@ const output = [0,1];
 
     fs.writeFileSync(__dirname+'/output/index.html',tpl);
 
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        args: ['--no-sandbox']
+    });
     const page = await browser.newPage();
     await page.goto('file://'+__dirname+'/output/index.html');
     await page.setViewport({width:width,height:height*output.length});
