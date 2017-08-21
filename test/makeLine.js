@@ -1,4 +1,3 @@
-const chai = require('chai');
 const makeLine = require('./../lib/makeLine.js');
 
 describe('Basic', function() {
@@ -6,7 +5,7 @@ describe('Basic', function() {
 	it('should make a line',(done)=>{
 
 		try {
-			makeLine().then(line=>{
+			makeLine().then(()=>{
 				done();
 			});
 		} catch (err) {

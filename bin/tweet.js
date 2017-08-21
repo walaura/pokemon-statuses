@@ -16,21 +16,24 @@ const client = new twitter({
 
 (async () => {
 
-    const data = await makeLineAndScreenshots();
+	const data = await makeLineAndScreenshots();
 
-    await Promise.all(data.files.map(screenshot => (
-        client.post('media/upload', {media: fs.readFileSync(screenshot)})
-    ))).then(screenshots => (
-        client.post('statuses/update', {
-            media_ids: screenshots.map(screenshot=>screenshot.media_id_string).join(','),
-            status: data.lines.text[0],
-        })
-    )).then(tweet=>{
-        console.info(chalk.green(`✔ Posted: ${data.lines.text[0]}`));
-        console.info(data);
-    }).catch(error => {
-        console.error(chalk.red('✘ Post failed'));
-        console.error(error);
-    })
+	await Promise.all(data.files.map(screenshot => (
+		client.post('media/upload', {media: fs.readFileSync(screenshot)})
+	))).then(screenshots => (
+		client.post('statuses/update', {
+			media_ids: screenshots.map(screenshot=>screenshot.media_id_string).join(','),
+			status: data.lines.text[0],
+		})
+	)).then(tweet=>{
+		console.info(chalk.green(`✔ Posted: ${data.lines.text[0]}`));
+		console.info(data);
+		console.info(tweet);
+		return true;
+	}).catch(error => {
+		console.error(chalk.red('✘ Post failed'));
+		console.error(error);
+		return;
+	});
 
 })();
