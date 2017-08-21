@@ -6,8 +6,9 @@ describe('Basic', function() {
 	it('should make a line',(done)=>{
 
 		try {
-			const line = await makeLine();
-			done()
+			makeLine().then(line=>{
+				done()
+			})
 		} catch (err) {
 			done(err);
 		}
