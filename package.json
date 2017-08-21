@@ -30,7 +30,9 @@
     "puppeteer": "^0.9.0",
     "random-item-in-array": "^1.0.0",
     "scraperjs": "^1.2.0",
-    "sharp": "^0.18.2",
     "twitter": "^1.7.1"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.1"
   }
 }
