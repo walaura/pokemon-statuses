@@ -30,9 +30,22 @@ module.exports = () => {
 	])
 	props.verb = conjugate(pronoun[0],random(verbs));
 
-	props.adjAsNoun = props.adj.substr(-2) === 'ed'? props.adj.substr(0,props.adj.length-2)+'ion' : props.adj+'ness';
+	props.adjAsNoun = [
+		(
+			props.adj.substr(-2) === 'ed'
+			? props.adj.substr(0,props.adj.length-2)+'i'
+			: props.adj
+		),
+		(
+			props.adj.substr(-1) === 'i'
+			? random(['on','ness','ty'])
+			: random(['ness','ity'])
+		),
+	].join('');
 
-	return scraperjs.StaticScraper.create(`https://bulbapedia.bulbagarden.net/wiki/${props.pkmn}_(Pokémon)`)
+	const url = `https://bulbapedia.bulbagarden.net/wiki/${props.pkmn}_(Pokémon)`;
+
+	return scraperjs.StaticScraper.create(url)
 		.scrape($ => (
 			'http://'+$('.roundy[style="background:#FFF;"] img')[0].attribs.src
 		)).then(image => (
