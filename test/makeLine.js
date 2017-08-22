@@ -1,4 +1,4 @@
-const makeLine = require('./../lib/makeLine.js');
+const makeLine = require('../src/lib/makeLine');
 
 describe('Basic', function() {
 
