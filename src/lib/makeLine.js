@@ -5,7 +5,7 @@ const conjugate = require('conjugate');
 const fs = require('fs');
 const scraperjs = require('scraperjs');
 
-let [pkmn, adj, verbs] = ['pkmn', 'adj', 'verbs'].map(corpus=>(
+const [pkmn, adj, verbs] = ['pkmn', 'adj', 'verbs'].map(corpus=>(
 	fs.readFileSync(path.resolve(config.path.corpus,`${corpus}.txt`))
 		.toString()
 		.split('\n')
@@ -24,7 +24,7 @@ module.exports = () => {
 
 	props.pkmn = random(pkmn);
 	props.adj = random([
-		//random(adj),
+		random(adj),
 		(conjugate(pronoun[0],random(verbs)).slice(0, -1)+'ed').replace(/eed$/,'ed').replace(/([gp])ed$/g,'$1$1ed')
 	])
 	props.verb = conjugate(pronoun[0],random(verbs));
