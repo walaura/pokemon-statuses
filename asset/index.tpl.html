@@ -1,12 +1,6 @@
-<box>
-    <img src='{img}'/>
-    <text>{text.1}</text>
-</box>
-<box>
-    <img src='{img}'/>
-    <text>{text.2}</text>
-</box>
-
+<body>
+    {body}
+</body>
 <style type='text/css'>
     @font-face {
         font-family: 'munro';
@@ -14,9 +8,16 @@
              url('./../asset/fonts/munro/munro-webfont.woff') format('woff');
         font-weight: normal;
         font-style: normal;
-
     }
-    * {
+    :root {
+        --width: 140px;
+        --height: 150px;
+        --url-dialog: url(./../asset/sprites/dialog-1.png);
+        --url-bg: url(./../asset/sprites/bg-1.png);
+        --url-plate: url(./../asset/sprites/plate-1.png);
+        {css}
+    }
+    body, body * {
         display:block;
         margin:0;
         padding:0;
@@ -24,11 +25,20 @@
         image-rendering: pixelated;
     }
     box {
-        width: 140px;
-        height: 150px;
+        width: var(--width);
+        height: var(--height);
         background: url(./../asset/bg.png);
         overflow: hidden;
         position: relative;
+    }
+    box:before {
+        content: '\0020';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 44px;
+        background: #000 var(--url-dialog);
     }
     box img {
         width: 64px;
@@ -37,6 +47,7 @@
         right: 0;
         bottom: 33%;
         margin: auto;
+        z-index: 9;
     }
     box text {
         position: absolute;
@@ -44,6 +55,7 @@
         left: 8%;
         right: 16%;
         bottom: 0;
+        z-index: 10;
         text-shadow: 1px 1px 0 rgba(0,125,125,.25);
     }
 </style>
