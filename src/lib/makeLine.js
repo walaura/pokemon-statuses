@@ -24,7 +24,7 @@ module.exports = () => {
 
 	props.pkmn = random(pkmn);
 	props.adj = random([
-		//random(adj),
+		random(adj),
 		(random(verbs)+'ed').replace(/eed$/,'ed')
 	])
 	props.verb = conjugate(pronoun[0],random(verbs));
