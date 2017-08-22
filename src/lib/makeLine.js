@@ -5,7 +5,7 @@ const conjugate = require('conjugate');
 const fs = require('fs');
 const scraperjs = require('scraperjs');
 
-let [pkmn, adj, verbs] = ['pkmn', 'adj', 'verbs'].map(corpus=>(
+const [pkmn, adj, verbs] = ['pkmn', 'adj', 'verbs'].map(corpus=>(
 	fs.readFileSync(path.resolve(config.path.corpus,`${corpus}.txt`))
 		.toString()
 		.split('\n')
