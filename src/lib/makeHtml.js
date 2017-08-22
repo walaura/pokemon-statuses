@@ -6,6 +6,7 @@ const path = require('path');
 const assets = {
 	dialog : fs.readdirSync(config.path.sprite).filter(name=>name.indexOf('dialog')===0),
 	plate : fs.readdirSync(config.path.sprite).filter(name=>name.indexOf('plate')===0),
+	bg : fs.readdirSync(config.path.sprite).filter(name=>name.indexOf('bg')===0),
 };
 
 module.exports = async line => {

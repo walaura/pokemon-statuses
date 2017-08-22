@@ -17,8 +17,11 @@ const client = new twitter({
 (async () => {
 
 	try {
-		
+
 		const data = await makeLineAndScreenshots();
+
+		console.info(chalk.blue(`i Post info:`));
+		console.info(data);
 
 		await Promise.all(data.files.map(screenshot => (
 			client.post('media/upload', {media: fs.readFileSync(screenshot)})

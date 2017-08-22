@@ -10,6 +10,7 @@ const [pkmn, adj, verbs] = ['pkmn', 'adj', 'verbs'].map(corpus=>(
 		.toString()
 		.split('\n')
 		.map(str=>str.trim())
+		.filter(str=>str.length>0)
 ));
 
 const pronoun = random([
@@ -23,7 +24,10 @@ module.exports = () => {
 	const props = {};
 
 	props.pkmn = random(pkmn);
-	props.adj = random(adj);
+	props.adj = random([
+		random(adj),
+		(conjugate(pronoun[0],random(verbs)).slice(0, -1)+'ed').replace(/eed$/,'ed').replace(/([gp])ed$/g,'$1$1ed')
+	])
 	props.verb = conjugate(pronoun[0],random(verbs));
 
 	props.adjAsNoun = props.adj.substr(-2) === 'ed'? props.adj.substr(0,props.adj.length-2)+'ion' : props.adj+'ness';
