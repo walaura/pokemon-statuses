@@ -10,6 +10,7 @@ const [pkmn, adj, verbs] = ['pkmn', 'adj', 'verbs'].map(corpus=>(
 		.toString()
 		.split('\n')
 		.map(str=>str.trim())
+		.filter(srt=>str.length>0)
 ));
 
 const pronoun = random([
