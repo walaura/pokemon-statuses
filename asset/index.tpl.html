@@ -1,5 +1,9 @@
 <body>
     {body}
+	<box>
+		<img src='http:////cdn.bulbagarden.net/upload/thumb/6/6d/491Darkrai.png/250px-491Darkrai.png'/>
+		<text>DARKRAI is testing!</text>
+	</box>
 </body>
 <style type='text/css'>
     @font-face {
@@ -12,9 +16,9 @@
     :root {
         --width: 140px;
         --height: 150px;
-        --url-dialog: url(./../asset/sprites/dialog-1.png);
-        --url-bg: url(./../asset/sprites/bg-1.png);
-        --url-plate: url(./../asset/sprites/plate-1.png);
+        --url-dialog: url(./../asset/sprite/dialog-1.png);
+        --url-bg: url(./../asset/sprite/bg-1.png);
+        --url-plate: url(./../asset/sprite/plate-1.png);
         {css}
     }
     body, body * {
@@ -27,7 +31,7 @@
     box {
         width: var(--width);
         height: var(--height);
-        background: url(./../asset/bg.png);
+		background: blue var(--url-bg);
         overflow: hidden;
         position: relative;
     }
@@ -38,6 +42,7 @@
         bottom: 0;
         right: 0;
         height: 44px;
+		z-index: 9;
         background: #000 var(--url-dialog);
     }
     box:after {
@@ -46,6 +51,8 @@
         left: 0;
         bottom: 40px;
         right: 0;
+		height: 30px;
+		z-index: 1;
         background: var(--url-plate) center bottom no-repeat;
     }
     box img {
@@ -53,9 +60,9 @@
         position: absolute;
         left: 0;
         right: 0;
-        bottom: 33%;
+        bottom: 30%;
         margin: auto;
-        z-index: 9;
+        z-index: 5;
     }
     box text {
         position: absolute;

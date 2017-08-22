@@ -1,4 +1,6 @@
-const makeLineAndScreenshots = require('./../lib/makeLineAndScreenshots.js');
+const makeLineAndScreenshots = require('../src/lib/makeLineAndScreenshots');
+const config = require('../src/config');
+
 const rmdir = require('rimraf');
 const fs = require('fs');
 const chai = require('chai');
@@ -6,14 +8,14 @@ const chai = require('chai');
 describe('Basic', function() {
 
 	before(done => {
-		rmdir(__dirname+'/../output',()=>done());
+		rmdir(config.path.output,()=>done());
 	})
 
 	it('should make a line and screenshots',(done)=>{
 
 		try {
 			makeLineAndScreenshots().then(data=>{
-				chai.expect(data.files.length).to.equal(fs.readdirSync(__dirname+'/../output').length-1);
+				chai.expect(data.files.length).to.equal(fs.readdirSync(config.path.output).length-1);
 				done();
 			});
 		} catch (err) {

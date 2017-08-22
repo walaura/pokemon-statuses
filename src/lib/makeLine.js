@@ -1,11 +1,16 @@
+const config = require('../config');
+const path = require('path');
 const random = require('random-item-in-array');
 const conjugate = require('conjugate');
 const fs = require('fs');
 const scraperjs = require('scraperjs');
 
-const pkmn = fs.readFileSync(__dirname+'/../corpus/pkmn.txt').toString().split('\n').map(str=>str.trim());
-const adj = fs.readFileSync(__dirname+'/../corpus/adj.txt').toString().split('\n').map(str=>str.trim());
-const verbs = fs.readFileSync(__dirname+'/../corpus/verbs.txt').toString().split('\n').map(str=>str.trim());
+const [pkmn, adj, verbs] = ['pkmn', 'adj', 'verbs'].map(corpus=>(
+	fs.readFileSync(path.resolve(config.path.corpus,`${corpus}.txt`))
+		.toString()
+		.split('\n')
+		.map(str=>str.trim())
+));
 
 const pronoun = random([
 	['she','her','herself'],

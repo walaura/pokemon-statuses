@@ -2,7 +2,7 @@
 
 require('dotenv').config();
 
-const makeLineAndScreenshots = require('./../lib/makeLineAndScreenshots');
+const makeLineAndScreenshots = require('../src/lib/makeLineAndScreenshots');
 const twitter = require('twitter');
 const chalk = require('chalk');
 const fs = require('fs');
@@ -16,24 +16,28 @@ const client = new twitter({
 
 (async () => {
 
-	const data = await makeLineAndScreenshots();
+	try {
+		
+		const data = await makeLineAndScreenshots();
 
-	await Promise.all(data.files.map(screenshot => (
-		client.post('media/upload', {media: fs.readFileSync(screenshot)})
-	))).then(screenshots => (
-		client.post('statuses/update', {
-			media_ids: screenshots.map(screenshot=>screenshot.media_id_string).join(','),
-			status: data.lines.text[0],
-		})
-	)).then(tweet=>{
-		console.info(chalk.green(`✔ Posted: ${data.lines.text[0]}`));
-		console.info(data);
-		console.info(tweet);
-		return true;
-	}).catch(error => {
+		await Promise.all(data.files.map(screenshot => (
+			client.post('media/upload', {media: fs.readFileSync(screenshot)})
+		))).then(screenshots => (
+			client.post('statuses/update', {
+				media_ids: screenshots.map(screenshot=>screenshot.media_id_string).join(','),
+				status: data.lines.text[0],
+			})
+		)).then(tweet=>{
+			console.info(chalk.green(`✔ Posted: ${data.lines.text[0]}`));
+			console.info(data);
+			console.info(tweet);
+			return true;
+		});
+
+	} catch(error) {
 		console.error(chalk.red('✘ Post failed'));
 		console.error(error);
 		return;
-	});
+	}
 
 })();
