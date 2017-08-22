@@ -1,4 +1,3 @@
-const fs = require('fs');
 const path = require('path');
 const puppeteer = require('puppeteer');
 const makeLine = require('./makeLine');
@@ -42,7 +41,7 @@ module.exports = async () => {
 					width: width,
 					height: height,
 				}
-			}).then(()=>filename)
+			}).then(()=>filename);
 
 		}));
 
@@ -56,7 +55,7 @@ module.exports = async () => {
 	} catch (err) {
 
 		return Promise.reject(err);
-		
+
 	}
 
 };

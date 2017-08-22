@@ -31,7 +31,7 @@ module.exports = () => {
 	return scraperjs.StaticScraper.create(`https://bulbapedia.bulbagarden.net/wiki/${props.pkmn}_(Pokémon)`)
 		.scrape($ => (
 			'http://'+$('.roundy[style="background:#FFF;"] img')[0].attribs.src
-  		)).then(image => (
+		)).then(image => (
 			{
 				image: image,
 				text: [
@@ -44,5 +44,5 @@ module.exports = () => {
 		.catch(err => {
 			console.error(`Failed fetching ${props.pkmn}`);
 			throw err;
-		})
+		});
 };

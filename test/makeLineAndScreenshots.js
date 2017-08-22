@@ -9,7 +9,7 @@ describe('Basic', function() {
 
 	before(done => {
 		rmdir(config.path.output,()=>done());
-	})
+	});
 
 	it('should make a line and screenshots',(done)=>{
 
