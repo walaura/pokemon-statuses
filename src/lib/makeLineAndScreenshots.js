@@ -29,7 +29,12 @@ module.exports = async () => {
 			height:height*output.length,
 			deviceScaleFactor: 10,
 		});
-		await page.goto('file://'+config.target.html);
+		await page.goto(
+			'file://'+config.target.html,
+			{
+				waitUntil: 'networkidle'
+			}
+		);
 
 		const filenames = await Promise.all(output.map(make=>{
 			const filename = path.resolve(config.path.output,`${make}.png`);
