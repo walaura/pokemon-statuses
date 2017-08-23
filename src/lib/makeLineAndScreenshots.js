@@ -36,7 +36,7 @@ module.exports = async () => {
 			}
 		);
 
-		const filenames = await Promise.all(output.map(make=>{
+		const filenames = await Promise.all(output.map( async make => {
 			const filename = path.resolve(config.path.output,`${make}.png`);
 			await page.screenshot({
 				path: filename,
