@@ -36,17 +36,20 @@ module.exports = async () => {
 			}
 		);
 
-		const filenames = await Promise.all(output.map(make=>{
+		const filenames = await Promise.all(output.map( async make => {
 			const filename = path.resolve(config.path.output,`${make}.png`);
-			return page.screenshot({
+			await page.screenshot({
 				path: filename,
+				fullPage: false,
+				type: 'png',
 				clip: {
 					x: 0,
 					y: height*make,
 					width: width,
 					height: height,
-				}
-			}).then(()=>filename);
+				},
+			})
+			return filename;
 
 		}));
 
