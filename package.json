@@ -22,7 +22,7 @@
   "homepage": "https://github.com/walaura/pokemon-statuses#readme",
   "dependencies": {
     "chai": "^4.1.1",
-    "chalk": "^2.1.0",
+    "chalk": "^2.4.1",
     "conjugate": "^1.0.3",
     "dotenv": "^4.0.0",
     "eslint": "^4.5.0",
